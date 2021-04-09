@@ -1,0 +1,150 @@
+import java.util.*;
+
+//Name:Balwinder kaur
+//Student Id: 201905439
+//class-IN2O23-G2
+
+public class TheJungle{
+
+	/*
+
+	What remains to be done:
+	Using the started code provided in google classroom,
+	extend the code with following functionalities:
+	1. you nowhave 2 arrays each containing 10 lion objects and 10 tiger objects
+	2. create some logic classor object anything to compare the strength of each of the 10 lions
+	and tigers stored in the Arrays: output whether LIONS or Tigers are the Winners! in 
+	terms of who is stronger
+
+	*/
+	
+	public static void main(String [] args){
+		System.out.println("starting application");
+		//Create TheCompetion class object
+		//calls functions to exetute program and copetion algorithm
+		//report winners
+		for (int i=0; i<10; i++){
+			TheCompetition c = new TheCompetition();
+			c.Run();
+			c.Test();
+	        c.DoCompetition();
+	        c.ReportWinners();
+		}
+	}
+
+}
+
+
+class TheCompetition{
+	// TheCompetition class will be the main organizer Boss Program to run all the work
+	// This will be the Supervisor Program
+	
+	//create and initialise variables
+	int lionWinners = 0;
+	int tigerWinners = 0;
+	  
+	//create array of Lion and Tiger Objects
+	Lion [] lions;
+	Tiger [] tigers;
+
+
+	public void Run(){
+		// from here I will call all the other methods that are making the Algorithm to execute
+		// start by generating 10 Lions and 10 Tigers
+		lions = new Lion[10];
+		tigers = new Tiger[10];
+
+		for(int i= 0; i<10; i++){
+			lions[i] = new Lion();
+			tigers[i] = new Tiger();
+		}
+
+	}
+
+	// set strength of Tiger and Lion objects stored in arrays
+	public void Test(){
+		int a, b;
+		for (int i=0; i<10; i++){
+			a = (lions[i]).catStrength;
+			b = (tigers[i]).catStrength;
+			System.out.print(a);
+			System.out.print(" ");
+			System.out.println(b);
+		}
+	}
+	
+	//compare Tiger objects with Lion objects stored in array
+	//increments count of winners of greater object
+	//prints count of winners
+	public void DoCompetition()	{
+		 	 
+		for(int i = 0; i < 10; i++) {
+			if(lions[i].catStrength > tigers[i].catStrength) {
+				lionWinners++;
+			}
+			else {
+				tigerWinners++;
+			}
+		}	
+		
+		System.out.println("\nBefore Adjustments:");
+		System.out.println("Number of Lion Winners: "+lionWinners);
+		System.out.println("Number of Tiger Winners: "+tigerWinners);
+		
+		int a = lionWinners;
+		int b = tigerWinners;
+		
+		//The Tigers are always winners in real storis
+		//adjustments are made to make Tigers winners every time
+		if(a > b) {
+			
+			 tigerWinners = a;
+			 lionWinners = b;
+		}
+		
+		else if(lionWinners == tigerWinners ) {
+			tigerWinners += 2;
+			lionWinners -= 2;
+		}
+	}
+	
+	//print the winners 
+	public void ReportWinners() {
+		System.out.println("\nAfter Adjustments:");
+		System.out.println("Number of Lion Winners: "+lionWinners);
+		System.out.println("Number of Tiger Winners: "+tigerWinners);
+		System.out.println();
+	}
+	
+}
+
+
+class Feline{
+	String catName;
+	int catStrength;
+
+	public Feline(){
+		Random rnumber = new Random();
+		catStrength = rnumber.nextInt(100);
+	}
+
+	
+}
+
+class Lion extends Feline{
+	public Lion(){
+		super();
+	}
+
+
+}
+
+class Tiger extends Feline{
+	public Tiger(){
+	super();	
+	}
+
+}
+
+
+	
